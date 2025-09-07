@@ -2,5 +2,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
 {%- seo -%}
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet"
+      href="{{ '/assets/css/main.css' | relative_url | absolute_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">

@@ -1,6 +1,6 @@
 title: "Thomas Zuber"
-baseurl: "https://quentinglorieux.github.io/thomaszuber" # à remplacer par le sous-dossier si besoin, sinon ""
-url: "https://thomaszuber.example"  # à remplacer par le domaine ou l'URL GitHub Pages
+url: "https://quentinglorieux.github.io"
+baseurl: "/thomaszuber"  
 
 # Langue (peut rester FR si monolingue)
 lang: fr
@@ -33,9 +33,9 @@ defaults:
   - scope: {path: "", type: "publications"}
     values: {layout: publication}
   - scope: {path: "", type: "courses"}
-    values: {layout: page}
+    values: {layout: course}
   - scope: {path: "", type: "projects"}
-    values: {layout: page}
+    values: {layout: project}
   - scope: {path: ""}
     values: {layout: page}
 
