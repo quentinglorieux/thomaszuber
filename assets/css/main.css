@@ -212,6 +212,17 @@ a:hover {
   color: #fff;
 }
 
+/* Dark mode tuning for outline buttons (avoid bright white on hover) */
+html.theme-dark .btn.outline {
+  color: var(--text);
+  border-color: var(--muted);
+}
+html.theme-dark .btn.outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-color: var(--text);
+}
+
 /* ===== Sections ===== */
 section {
   margin: 26px 0 34px;
@@ -255,7 +266,7 @@ section > h2 {
 .card:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  background-color: var(--surface); légère variation slate-50
+  background-color: var(--surface); /* légère variation slate-50 */
 }
 
 .theme-dark .card:hover {
@@ -396,18 +407,43 @@ section > h2 {
   color: var(--muted);
 }
 
+
 .pub-item .actions {
-  margin-top: 0.2rem;    /* collé au bloc précédent */
+  margin-top: 0.4rem;
   font-size: 0.95rem;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .pub-item .actions a {
-  color: var(--primary); /* comme avant, liens teal sobres */
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 500;
   text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .pub-item .actions a:hover {
-  text-decoration: underline;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Dark mode tuning for pub-item actions */
+html.theme-dark .pub-item .actions a {
+  color: var(--text);
+  border-color: var(--muted);
+}
+
+html.theme-dark .pub-item .actions a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-color: var(--text);
 }
 
 .pub-item h3 {
@@ -451,3 +487,56 @@ footer {
 .course .course-meta { margin: 0; font-size: 1.2rem;}
 .course h2 { font-family: 'Lora', serif; font-weight: 500; margin: 1.2rem 0 .4rem; }
 .course ul { list-style: square; padding-left: 1.25rem; }
+
+/* ===== CV ===== */
+.cv__header { margin-bottom: 18px; }
+.cv__section { margin: 18px 0 10px; }
+.cv__section > h2 { font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 1.5rem; margin: 2.6rem 0 -0.3rem; }
+.cv__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cv__item { padding: 10px 0; border-top: 1px solid var(--border); }
+.cv__item:first-child { border-top: none; }
+.cv__head { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: baseline; }
+.cv__title { font-size: 1rem; }
+.cv__dates { font-size: .95rem; }
+.cv__bullets { margin: .25rem 0 0 .95rem; color: var(--muted); }
+.cv__bullets li { margin: .2rem 0; }
+@media (max-width: 640px) {
+  .cv__head { grid-template-columns: 1fr; }
+  .cv__dates { justify-self: start; }
+}
+
+/* ==== Dark mode toggle ==== */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+html:not(.theme-dark) .theme-toggle .icon-sun {
+  display: inline;
+}
+
+html.theme-dark .theme-toggle .icon-moon {
+  display: inline;
+}
+
+/* Ensure dark mode toggle icons are visible */
+/* Ensure dark mode toggle icons are visible */
+.theme-toggle svg {
+  color: var(--text);
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+html.theme-dark .theme-toggle svg {
+  color: #e2e8f0; /* slate-200: visible but not pure white */
+}

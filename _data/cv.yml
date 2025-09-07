@@ -1,0 +1,62 @@
+name: Thomas Zuber
+position: Economist at the Bank of France; Lecturer in PSE's PPD master program
+email: thomas.zuber@gmail.com
+location: Paris, France
+
+sections:
+  - key: positions
+    title: Positions
+    items:
+      - role: Economist (Structural Change / Labor)
+        org: Bank of France
+        location: Paris, France
+        start: Sep 2021
+        end: Present
+        bullets:
+          - Applied research on firm dynamics, productivity, and labor market reallocation.
+          - Policy notes and empirical evaluations.
+      - role: Lecturer (PPD program)
+        org: Paris School of Economics
+        location: Paris, France
+        start: Sep 2021
+        end: Present
+        bullets:
+          - Modules on labor, productivity and policy evaluation.
+
+  - key: education
+    title: Education
+    items:
+      - degree: PhD in Economics
+        org: Paris School of Economics
+        location: Paris, France
+        year: 2021
+        bullets:
+          - Dissertation on structural change and firm/worker adjustment.
+
+  - key: teaching
+    title: Teaching
+    items:
+      - course: PPD — Labor & Structural Change
+        org: Paris School of Economics
+        years: 2021–Present
+        bullets:
+          - Lectures and practicals; evaluation design.
+
+  - key: awards
+    title: Awards & Grants
+    items:
+      - name: Grant 1
+        org: Funding Agency (example)
+        year: 2024
+        bullets:
+          - Project on 
+  
+  - key: skills
+    title: Skills
+    items:
+      - name: Methods
+        list: [Causal inference, Econometrics, Structural models]
+      - name: Data
+        list: [French admin data, Matched employer-employee, Customs]
+      - name: Tools
+        list: [Python, R, Stata, Git]

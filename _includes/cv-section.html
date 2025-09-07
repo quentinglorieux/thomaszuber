@@ -1,0 +1,32 @@
+<section class="cv__section">
+  <h2>{{ include.title }}</h2>
+  <ul class="cv__list">
+    {% for it in include.items %}
+      <li class="cv__item">
+        <div class="cv__head">
+          <div class="cv__title">
+            {% if it.role %}<strong>{{ it.role }}</strong>{% endif %}
+            {% if it.degree %}<strong>{{ it.degree }}</strong>{% endif %}
+            {% if it.course %}<strong>{{ it.course }}</strong>{% endif %}
+            {% if it.name %}<strong>{{ it.name }}</strong>{% endif %}
+            {% if it.org %}<span class="muted"> · {{ it.org }}</span>{% endif %}
+            {% if it.location %}<span class="muted"> · {{ it.location }}</span>{% endif %}
+          </div>
+          <div class="cv__dates muted">
+            {% if it.years %}{{ it.years }}{% endif %}
+            {% if it.year %}{{ it.year }}{% endif %}
+            {% if it.start %}{{ it.start }}{% endif %}{% if it.end %}–{{ it.end }}{% endif %}
+          </div>
+        </div>
+        {% if it.list %}
+          <p class="cv__bullets">{{ it.list | join: ', ' }}</p>
+        {% endif %}
+        {% if it.bullets %}
+          <ul class="cv__bullets">
+            {% for b in it.bullets %}<li>{{ b }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
