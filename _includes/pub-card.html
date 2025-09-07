@@ -1,0 +1,36 @@
+<article class="pub-item">
+  <h3>
+    <a
+      class="title-link"
+      href="{{ include.pub.url | relative_url }}"
+      aria-label="{{ include.pub.title }}"
+    >
+      {{ include.pub.title }}
+    </a>
+  </h3>
+  <p class="meta">
+    {{ include.pub.authors | join: ', ' }}<br />
+    {% if include.pub.venue %} {{ include.pub.venue }}{% endif %} {% if
+    include.pub.year %} ·{{ include.pub.year }}{% endif %}
+  </p>
+  {% if include.pub.abstract %}
+  <p class="muted" style="margin: 0.4rem 0 0">
+    {{ include.pub.abstract | truncate: 180 }}
+  </p>
+  {% endif %}
+  <div class="tags">
+    {%- for t in include.pub.tags -%}
+    <span class="tag">{{ t }}</span>
+    {%- endfor -%}
+  </div>
+  <div class="actions">
+    {%- if include.pub.pdf_url -%}<a href="{{ include.pub.pdf_url }}">PDF</a>{%-
+    endif -%} {%- if include.pub.publisher_url -%}{% if include.pub.pdf_url %} ·
+    {% endif %}<a href="{{ include.pub.publisher_url }}">Publisher</a>{%- endif
+    -%} {%- if include.pub.code_url -%}{% if include.pub.pdf_url or
+    include.pub.publisher_url %} · {% endif %}<a
+      href="{{ include.pub.code_url }}"
+      >Code</a
+    >{%- endif -%}
+  </div>
+</article>

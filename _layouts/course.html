@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<article class="course">
+  <header style="margin-bottom:16px">
+    <a href="/teaching/" class="muted" style="text-decoration:none">← Back to Teaching</a>
+    <h1 style="margin:.4rem 0 0.25rem">{{ page.title }}</h1>
+    <p class="course-meta muted">
+      {% if page.level %}<span>{{ page.level }}</span>{% endif %}
+      {% if page.institution %}{% if page.level %} · {% endif %}<span>{{ page.institution }}</span>{% endif %}
+      {% if page.year %}{% if page.level or page.institution %} · {% endif %}<span>{{ page.year }}</span>{% endif %}
+    </p>
+  </header>
+
+  {% if page.description %}
+    <section style="margin: 0 0 16px">
+      <h2>Description</h2>
+      <p>{{ page.description }}</p>
+    </section>
+  {% endif %}
+
+  {% if page.materials %}
+    <section style="margin: 0 0 16px">
+      <h2>Materials</h2>
+      <ul>
+        {% for m in page.materials %}
+          <li><a href="{{ m.url }}">{{ m.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% if page.pdf_url or page.syllabus_url or page.code_url %}
+  <section>
+    <h2>Links</h2>
+    <div class="actions">
+      {% if page.pdf_url %}<a href="{{ page.pdf_url }}">PDF</a>{% endif %}
+      {% if page.syllabus_url %}{% if page.pdf_url %} · {% endif %}<a href="{{ page.syllabus_url }}">Syllabus</a>{% endif %}
+      {% if page.code_url %}{% if page.pdf_url or page.syllabus_url %} · {% endif %}<a href="{{ page.code_url }}">Code</a>{% endif %}
+    </div>
+  </section>
+  {% endif %}
+</article>

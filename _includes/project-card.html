@@ -1,0 +1,10 @@
+<article class="card pub">
+  <h3>{{ include.project.title }}</h3>
+  {% if include.project.status %}<p class="meta">{{ include.project.status }}</p>{% endif %}
+  {% if include.project.coauthors %}<p class="muted">Co-auteurs : {{ include.project.coauthors | join: ', ' }}</p>{% endif %}
+  {% if include.project.summary %}<p class="muted">{{ include.project.summary }}</p>{% endif %}
+  <div class="actions">
+    <a href="{{ include.project.url | relative_url }}">Détails</a>
+  </div>
+  <a class="card__link" href="{{ include.project.url | relative_url }}" aria-label="{{ include.project.title }}"></a>
+</article>

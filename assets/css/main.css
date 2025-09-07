@@ -1,0 +1,454 @@
+/* ===== Palette sobre (type Tailwind Slate) ===== */
+:root {
+  /* Light (par défaut) */
+  --bg: #f8fafc; /* slate-50 */
+  --surface: #f1f5f9; /* slate-50 */
+  --elev: #ffffff; /* idem surface pour un rendu plat */
+  --text: #0f172a; /* slate-900 */
+  --muted: #475569; /* slate-600 */
+  --primary: #0d9488; /* teal-600 */
+  --accent: #115e59; /* teal-800 */
+  --border: #e2e8f0; /* slate-200 */
+  --shadow: 0 4px 14px rgba(2, 6, 23, 0.06); /* douceur */
+}
+
+/* Mode sombre activable via .theme-dark sur <html> ou <body> */
+.theme-dark {
+  --bg: #0b0f14; /* ancien fond sombre */
+  --surface: #0f1620;
+  --elev: #121a25;
+  --text: #e6edf3;
+  --muted: #94a3b8; /* slate-400-ish */
+  --primary: #e2e8f0; /* slate-200 pour boutons */
+  --accent: #94a3b8;
+  --border: #1f2a37;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Optionnel : préférer le thème de l’OS si aucune classe n’est posée */
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-dark):not(.theme-light) {
+    --bg: #0b0f14;
+    --surface: #0f1620;
+    --elev: #121a25;
+    --text: #e6edf3;
+    --muted: #94a3b8;
+    --primary: #e2e8f0;
+    --accent: #94a3b8;
+    --border: #1f2a37;
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Source Sans 3', system-ui, -apple-system, Segoe UI, Ubuntu, Cantarell,
+    "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+a:hover {
+  color: var(--text);
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ===== Navigation ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(160%) blur(6px);
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid var(--border);
+}
+.theme-dark .nav {
+  background: rgba(11, 15, 20, 0.6);
+}
+.nav .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 24px;
+}
+.nav .brand a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.nav ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 2px;
+  transition: 0.2s ease;
+}
+.nav a:hover {
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.04);
+}
+.nav a.active {
+  color: var(--text);
+  background: rgba(13, 148, 136, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(13, 148, 136, 0.25);
+}
+.theme-dark .nav a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.theme-dark .nav a.active {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Hero ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: center;
+  margin: 24px 0 36px;
+}
+.portrait {
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.hero__right h1 {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.1;
+  margin: 0 0 6px;
+}
+.hero__right p {
+  margin: 0 0 10px;
+}
+.affiliations {
+  color: var(--muted);
+}
+.badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0 0;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.theme-dark .badge {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  background: var(--primary);
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: transform 0.06s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+.btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn.outline {
+  background: transparent;
+  color: var(--primary);
+  box-shadow: none;
+  border: 1px solid var(--primary);
+  font-weight: 500;
+}
+.btn.outline:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ===== Sections ===== */
+section {
+  margin: 26px 0 34px;
+}
+section > h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0.2px;
+  margin: 0 0 14px;
+}
+
+/* Grid / cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.card {
+  grid-column: span 6;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+.card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+.card .actions a,
+.card .meta a,
+.card h3 a {
+  position: relative;
+  z-index: 2;
+}
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  background-color: var(--surface); légère variation slate-50
+}
+
+.theme-dark .card:hover {
+  background-color: #1e293b;
+}
+
+.card h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;       /* un peu plus consistant que 300 mais pas trop gras */
+  font-size: 1.05rem;     /* plus petit qu’un h2, sobre */
+  line-height: 1.4;
+  margin: 0 0 0.25rem;    /* réduit l’espace au-dessus */
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+.card h3 .title-link {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.card h3 .title-link:hover {
+  color: #334155; /* slate-700 en clair */
+}
+
+.theme-dark .card h3 .title-link:hover {
+  color: #cbd5e1; /* slate-300 en sombre */
+  text-decoration: underline;
+  text-decoration-color: #94a3b8; /* slate-400 */
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Publication card */
+.card.pub {
+  position: relative;
+  overflow: hidden;
+}
+.card.pub .meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0.35rem 0 0.6rem;
+}
+.card.pub .tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.03);
+}
+.card.pub .actions {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+.card.pub .actions a {
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.9;
+}
+.card.pub .actions a:hover {
+  text-decoration: underline;
+}
+
+/* Course card */
+.card.course .muted {
+  margin-top: 0.2rem;
+}
+
+/* Teaching list page tweaks */
+.stack {
+  display: grid;
+  gap: 14px;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 140px 1fr;
+  }
+  .portrait {
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+  }
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .card {
+    grid-column: span 6;
+  }
+}
+@media (max-width: 640px) {
+  .container {
+    padding: 18px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .portrait {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.grid--onecol {
+  grid-template-columns: 1fr;
+}
+
+/* Liste simple des publications */
+.pub-item {
+  margin-bottom: 1rem;   /* réduit l’espace entre les entrées */
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.pub-item h3 {
+  margin: 0 0 0.2rem;    /* moins d’espace sous le titre */
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 1.05rem;
+}
+
+.pub-item .meta {
+  margin: 0 0 0.3rem;    /* réduit l’espace après les auteurs */
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.pub-item .actions {
+  margin-top: 0.2rem;    /* collé au bloc précédent */
+  font-size: 0.95rem;
+}
+
+.pub-item .actions a {
+  color: var(--primary); /* comme avant, liens teal sobres */
+  text-decoration: none;
+}
+
+.pub-item .actions a:hover {
+  text-decoration: underline;
+}
+
+.pub-item h3 {
+  margin: 0 0 0.2rem;
+  font-family: 'Roboto', sans-serif; /* au lieu de Lora */
+  font-weight: 400;
+  font-size: 1.05rem;
+  transition: color 0.2s ease;
+}
+
+.pub-item h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.pub-item h3 a:hover {
+  color: #475569; /* slate-700 en clair */
+}
+
+.theme-dark .pub-item h3 a:hover {
+  color: #cbd5e1; /* slate-300 en sombre */
+  text-decoration-color: #94a3b8;
+}
+
+footer {
+  max-width: 960px;   /* même largeur que ton .main si défini */
+  margin: 2rem auto;  /* centre horizontalement et ajoute un peu d’espace */
+  padding: 1rem;
+  text-align: center; /* contenu centré */
+  font-size: 0.9rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+.project h1 { font-weight: 400; font-size: 2.2rem; }
+.project .project-meta { margin: 0;font-size: 1.2rem;}
+.project h2 { font-family: 'Lora', serif; font-weight: 500; margin: 1.2rem 0 .4rem; }
+.project .tags { margin-top: .25rem; }
+
+.course h1 {  font-weight: 400; font-size: 2.2rem;}
+.course .course-meta { margin: 0; font-size: 1.2rem;}
+.course h2 { font-family: 'Lora', serif; font-weight: 500; margin: 1.2rem 0 .4rem; }
+.course ul { list-style: square; padding-left: 1.25rem; }

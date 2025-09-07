@@ -1,0 +1,5 @@
+<article class="card course">
+  <h3>{{ include.course.title }}</h3>
+  <p class="muted">{{ include.course.level }}{% if include.course.institution %} · {{ include.course.institution }}{% endif %}</p>
+  <a class="card__link" href="{{ include.course.url | relative_url }}" aria-label="{{ include.course.title }}"></a>
+</article>

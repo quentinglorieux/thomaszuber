@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<article class="project">
+  <header style="margin-bottom:16px">
+    <h1 style="margin:.4rem 0 0.25rem">{{ page.title }}</h1>
+    <p class="project-meta muted">
+      {% if page.status %}<span>{{ page.status }}</span>{% endif %}
+      {% if page.coauthors %}{% if page.status %} <br {% endif %}<span><strong>Co-authors:</strong> {{ page.coauthors | join: ', ' }}</span>{% endif %}
+    </p>
+  </header>
+
+  {% if page.summary %}
+    <section style="margin: 0 0 16px">
+      <h2>Summary</h2>
+      <p>{{ page.summary }}</p>
+    </section>
+  {% endif %}
+
+  {% if page.abstract %}
+    <section style="margin: 0 0 16px">
+      <h2>Abstract</h2>
+      <p>{{ page.abstract }}</p>
+    </section>
+  {% endif %}
+
+  {% if page.tags %}
+    <section style="margin: 0 0 16px">
+      <h2>Keywords</h2>
+      <div class="tags">
+        {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if page.pdf_url or page.publisher_url or page.code_url or page.data_url %}
+  <section>
+    <h2>Links</h2>
+    <div class="actions">
+      {% if page.pdf_url %}<a href="{{ page.pdf_url }}">PDF</a>{% endif %}
+      {% if page.publisher_url %}{% if page.pdf_url %} · {% endif %}<a href="{{ page.publisher_url }}">Publisher</a>{% endif %}
+      {% if page.code_url %}{% if page.pdf_url or page.publisher_url %} · {% endif %}<a href="{{ page.code_url }}">Code</a>{% endif %}
+      {% if page.data_url %}{% if page.pdf_url or page.publisher_url or page.code_url %} · {% endif %}<a href="{{ page.data_url }}">Data</a>{% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+      <a href="/research/" class="muted" style="text-decoration:none">← Back to Research</a>
+
+</article>

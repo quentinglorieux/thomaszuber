@@ -1,0 +1,20 @@
+<article class="card blog">
+  <h3>
+    <a class="title-link" href="{{ include.project.url | relative_url }}" aria-label="{{ include.project.title }}">
+      {{ include.project.title }}
+    </a>
+  </h3>
+  {% if include.project.status %}
+    <p class="meta">{{ include.project.status }}</p>
+  {% endif %}
+  {% if include.project.coauthors %}
+    <p class="muted">Co-authors: {{ include.project.coauthors | join: ', ' }}</p>
+  {% endif %}
+  {% if include.project.summary %}
+    <p class="muted">{{ include.project.summary | truncate: 220 }}</p>
+  {% endif %}
+  <div class="actions">
+    <a href="{{ include.project.url | relative_url }}">En savoir plus →</a>
+  </div>
+  <a class="card__link" href="{{ include.project.url | relative_url }}" aria-label="{{ include.project.title }}"></a>
+</article>

@@ -1,0 +1,56 @@
+title: "Thomas Zuber"
+baseurl: ""
+url: "https://thomaszuber.example"  # à remplacer par le domaine ou l'URL GitHub Pages
+
+# Langue (peut rester FR si monolingue)
+lang: fr
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins whitelists (via github-pages)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  publications:
+    output: true
+    permalink: /publications/:path/
+  courses:
+    output: true
+    permalink: /teaching/:path/
+  projects:
+    output: true
+    permalink: /research/:path/
+
+# Defaults: layouts auto selon type
+defaults:
+  - scope: {path: "", type: "publications"}
+    values: {layout: publication}
+  - scope: {path: "", type: "courses"}
+    values: {layout: page}
+  - scope: {path: "", type: "projects"}
+    values: {layout: page}
+  - scope: {path: ""}
+    values: {layout: page}
+
+# Navigation (alimentée par _data/nav.yml)
+header_pages: []
+
+# SEO
+seo:
+  type: Person
+  name: "Thomas Zuber"
+  links:
+    - https://scholar.google.com/...
+    - https://orcid.org/...
+
+# Exclusions
+exclude:
+  - node_modules
+  - vendor

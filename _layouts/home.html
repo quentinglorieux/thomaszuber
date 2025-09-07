@@ -1,0 +1,51 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero__left">
+    <img class="portrait" src="{{ '/assets/img/portrait.png' | relative_url }}" alt="Portrait de {{ site.title }}">
+  </div>
+  <div class="hero__right">
+    <h1>{{ site.title }}</h1>
+    <p class="lead">{{ site.data.author.position }}</p>
+     <p class="lead">{{ site.data.author.description }}</p>
+    <p class="affiliations">{{ site.data.author.affiliations }}</p>
+    <div class="badges">
+      {% for badge in site.data.author.badges %}
+        <span class="badge">{{ badge }}</span>
+      {% endfor %}
+    </div>
+    <p style="margin-top:14px">
+      <a class="btn outline" href="/about/">CV</a>
+            <a class="btn outline" href="/research/">Recherche</a>
+      <a class="btn outline" href="/publications/">Voir les publications</a>
+
+
+    </p>
+  </div>
+</section>
+<section>
+  <h2>Bio</h2>
+  <p>{{ site.data.author.bio }}</p>
+</section>
+
+<section>
+  <h2>Current research</h2>
+  <div class="grid grid--twocol">
+    {%- assign prs = site.projects | slice: 0, 4 -%}
+    {%- for pr in prs -%}
+      {% include project-snippet.html project=pr %}
+    {%- endfor -%}
+  </div>
+</section>
+
+<section>
+  <h2>Publications</h2>
+  <div class="grid grid--onecol">
+    {%- assign pubs = site.publications | sort: 'year' | reverse | slice: 0, 3 -%}
+    {%- for pub in pubs -%}
+      {% include pub-card.html pub=pub %}
+    {%- endfor -%}
+  </div>
+</section>
+
