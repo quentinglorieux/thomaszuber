@@ -1,5 +1,5 @@
 title: "Thomas Zuber"
-baseurl: ""
+baseurl: "https://quentinglorieux.github.io/thomaszuber" # à remplacer par le sous-dossier si besoin, sinon ""
 url: "https://thomaszuber.example"  # à remplacer par le domaine ou l'URL GitHub Pages
 
 # Langue (peut rester FR si monolingue)
