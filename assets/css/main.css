@@ -1,9 +1,3 @@
----
----
-
-@import "{{ site.theme }}";
-
-/* ===== Palette sobre (type Tailwind Slate) ===== */
 :root {
   /* Light (par défaut) */
   --bg: #f8fafc; /* slate-50 */
