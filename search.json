@@ -1,0 +1,29 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+[
+{% assign docs = site.pages
+  | where_exp: 'd', 'd.title'
+  | where_exp: 'd', 'd.url'
+  | where_exp: 'd', 'd.search != false'
+  | concat: site.publications
+  | concat: site.projects
+  | concat: site.courses
+  | concat: site.posts
+  | uniq %}
+
+{% for d in docs %}
+  {% capture body %}
+    {{ d.content | strip_html | normalize_whitespace | replace: '\n', ' ' }}
+  {% endcapture %}
+  {
+    "id": {{ forloop.index0 }},
+    "title": {{ d.title | jsonify }},
+    "url": {{ d.url | relative_url | jsonify }},
+    "type": {{ d.collection | default: 'page' | jsonify }},
+    "content": {{ body | truncate: 2000 | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
