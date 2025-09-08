@@ -6,7 +6,7 @@ year: 2024
 status: "Published"
 doi: 10.1257/app.XXXXXXX
 publisher_url: https://doi.org/10.1257/app.XXXXXXX
-pdf_url: /assets/pdf/opposing-firm-responses.pdf
+pdf_url: /assets/pdf/publications/ssrn-4312100.pdf
 code_url: https://github.com/user/repo
 tags: [productivity, macro, firms]
 abstract: >-
