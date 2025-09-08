@@ -1,9 +1,9 @@
 - title: Accueil
   url: /
-- title: Publications
-  url: /publications/
 - title: Recherche
   url: /research/
+- title: Publications
+  url: /publications/
 - title: Enseignement
   url: /teaching/
 - title: À propos
