@@ -24,7 +24,7 @@ layout: default
       <h2>Materials</h2>
       <ul>
         {% for m in page.materials %}
-          <li><a href="{{ m.url }}">{{ m.name }}</a></li>
+          <li><a href="{{ site.baseurl }}{{ m.url }}">{{ m.name }}</a></li>
         {% endfor %}
       </ul>
     </section>
@@ -34,9 +34,9 @@ layout: default
   <section>
     <h2>Links</h2>
     <div class="actions">
-      {% if page.pdf_url %}<a href="{{ page.pdf_url }}">PDF</a>{% endif %}
-      {% if page.syllabus_url %}{% if page.pdf_url %} · {% endif %}<a href="{{ page.syllabus_url }}">Syllabus</a>{% endif %}
-      {% if page.code_url %}{% if page.pdf_url or page.syllabus_url %} · {% endif %}<a href="{{ page.code_url }}">Code</a>{% endif %}
+      {% if page.pdf_url %}<a href="{{ site.baseurl }}{{ page.pdf_url }}">PDF</a>{% endif %}
+      {% if page.syllabus_url %}{% if page.pdf_url %} · {% endif %}<a href="{{ site.baseurl }}{{ page.syllabus_url }}">Syllabus</a>{% endif %}
+      {% if page.code_url %}{% if page.pdf_url or page.syllabus_url %} · {% endif %}<a href="{{ site.baseurl }}{{ page.code_url }}">Code</a>{% endif %}
     </div>
   </section>
   {% endif %}
