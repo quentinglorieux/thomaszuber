@@ -289,7 +289,8 @@ section > h2 {
 }
 
 .card h3 .title-link:hover {
-  color: #334155; /* slate-700 en clair */
+  color: #475569; /* slate-700 en clair */
+  text-decoration: underline;
 }
 
 .theme-dark .card h3 .title-link:hover {

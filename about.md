@@ -3,10 +3,14 @@ title: À propos
 ---
 
 ## Thomas Zuber
-Économiste, Banque de France. Enseignant à PSE. Intérêts : productivité, croissance, marché du travail.
+Économiste, Banque de France.  
+Enseignant à PSE.  
+Intérêts : productivité, croissance, marché du travail.
 
-- Courriel : prenom.nom@banque-france.fr
-- [Google Scholar](#) · [ORCID](#)
+- Email : thomas.zuber@banque-france.fr
+- [Google Scholar](https://scholar.google.com/citations?user=3W5BMVoAAAAJ&hl=fr)
+- [ORCID](#)
+- [PSE profile](https://www.parisschoolofeconomics.eu/en/persons/thomas-zuber/)
 
 ## Memorable moments in the history of economic thought: 
 
