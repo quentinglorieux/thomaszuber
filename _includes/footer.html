@@ -31,3 +31,31 @@
     }
   });
 </script>
+<script>
+  (function(){
+    var nav   = document.querySelector('.nav');
+    var btn   = document.getElementById('nav-toggle');
+    var menu  = document.getElementById('site-menu');
+    var ovl   = document.querySelector('.nav__overlay');
+    if (!nav || !btn || !menu || !ovl) return;
+
+    function openMenu(){
+      nav.setAttribute('data-open','true');
+      btn.setAttribute('aria-expanded','true');
+      document.body.classList.add('menu-open');
+    }
+    function closeMenu(){
+      nav.setAttribute('data-open','false');
+      btn.setAttribute('aria-expanded','false');
+      document.body.classList.remove('menu-open');
+    }
+
+    btn.addEventListener('click', function(){
+      (nav.getAttribute('data-open') === 'true') ? closeMenu() : openMenu();
+    });
+    ovl.addEventListener('click', closeMenu);
+    menu.addEventListener('click', function(e){ if (e.target.tagName === 'A') closeMenu(); });
+    window.addEventListener('resize', function(){ if (window.innerWidth > 860) closeMenu(); });
+    window.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+  })();
+</script>
