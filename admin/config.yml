@@ -1,0 +1,159 @@
+backend:
+  name: github
+  repo: quentinglorieux/thomaszuber   # <-- ton repo GitHub
+  branch: main
+  # Attention: pour authentifier Decap CMS en direct sur GitHub,
+  # il faut un OAuth App (ou héberger via Netlify + Git Gateway).
+  # Sinon, utilise Netlify Identity/Git Gateway.
+
+# Optionnel: workflow de brouillons + revue
+publish_mode: editorial_workflow
+
+media_folder: "assets/uploads"   # où les fichiers seront commités
+public_folder: "/assets/uploads" # URL publique correspondante
+
+site_url: "https://quentinglorieux.github.io/thomaszuber"
+locale: "fr"
+
+collections:
+  # === Publications ===
+  - name: "publications"
+    label: "Publications"
+    label_singular: "Publication"
+    folder: "_publications"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    preview_path: "publications/{{slug}}/"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "publication" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date (ISO)", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Authors", name: "authors", widget: "list", field: { label: "Author", name: "author", widget: "string" } }
+      - { label: "Venue", name: "venue", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "number", value_type: "int", min: 1900, max: 2100 }
+      - { label: "Abstract (court)", name: "abstract", widget: "text", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "PDF URL", name: "pdf_url", widget: "string", required: false }
+      - { label: "Publisher URL", name: "publisher_url", widget: "string", required: false }
+      - { label: "Code URL", name: "code_url", widget: "string", required: false }
+      - { label: "Body (page)", name: "body", widget: "markdown", required: false }
+
+  # === Projects / Current research ===
+  - name: "projects"
+    label: "Research / Projects"
+    label_singular: "Project"
+    folder: "_projects"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "research/{{slug}}/"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "project" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Status", name: "status", widget: "string", required: false }
+      - { label: "Co-authors", name: "coauthors", widget: "list", required: false, field: { label: "Name", name: "name", widget: "string" } }
+      - { label: "Summary (court)", name: "summary", widget: "text", required: false }
+      - { label: "Abstract (long)", name: "abstract", widget: "text", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "PDF URL", name: "pdf_url", widget: "string", required: false }
+      - { label: "Publisher URL", name: "publisher_url", widget: "string", required: false }
+      - { label: "Code URL", name: "code_url", widget: "string", required: false }
+      - { label: "Data URL", name: "data_url", widget: "string", required: false }
+      - { label: "Body (page)", name: "body", widget: "markdown", required: false }
+
+  # === Courses / Teaching ===
+  - name: "courses"
+    label: "Teaching / Courses"
+    label_singular: "Course"
+    folder: "_courses"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "teaching/{{slug}}/"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "course" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Level", name: "level", widget: "string", required: false }
+      - { label: "Institution", name: "institution", widget: "string", required: false }
+      - { label: "Year(s)", name: "year", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Materials"
+        name: "materials"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
+      - { label: "Syllabus (PDF URL)", name: "syllabus_url", widget: "string", required: false }
+      - { label: "Code URL", name: "code_url", widget: "string", required: false }
+      - { label: "Body (page)", name: "body", widget: "markdown", required: false }
+
+  # === Posts (si tu veux un blog) ===
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # === Pages fixes ===
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About"
+        name: "about"
+        file: "about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - label: "CV (page)"
+        name: "cv"
+        file: "cv.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  # === Données YAML (hero/bio/badges, CV data) ===
+  - name: "data"
+    label: "Data files"
+    files:
+      - label: "Author data"
+        name: "author"
+        file: "_data/author.yml"
+        format: "yaml"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Position", name: "position", widget: "string", required: false }
+          - { label: "PhD", name: "phd", widget: "string", required: false }
+          - { label: "Affiliations", name: "affiliations", widget: "string", required: false }
+          - { label: "Badges", name: "badges", widget: "list", required: false, field: { label: "Badge", name: "badge", widget: "string" } }
+          - { label: "Bio", name: "bio", widget: "text", required: false }
+      - label: "CV data"
+        name: "cvdata"
+        file: "_data/cv.yml"
+        format: "yaml"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Position", name: "position", widget: "string", required: false }
+          - { label: "Email", name: "email", widget: "string", required: false }
+          - { label: "Location", name: "location", widget: "string", required: false }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Key", name: "key", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Role / Degree / Course / Name", name: "role", widget: "string", required: false }
+                  - { label: "Org", name: "org", widget: "string", required: false }
+                  - { label: "Location", name: "location", widget: "string", required: false }
+                  - { label: "Start", name: "start", widget: "string", required: false }
+                  - { label: "End/Year/Years", name: "end", widget: "string", required: false }
+                  - { label: "List (inline)", name: "list", widget: "list", required: false, field: { label: "Item", name: "item", widget: "string" } }
+                  - { label: "Bullets", name: "bullets", widget: "list", required: false, field: { label: "Bullet", name: "bullet", widget: "string" } }

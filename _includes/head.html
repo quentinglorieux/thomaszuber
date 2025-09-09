@@ -2,6 +2,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
 {%- seo -%}
+<!-- Vendor JS -->
+<script src="{{ '/assets/external/lunr.js' | relative_url }}"></script>
+
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 <script defer src="{{ '/assets/js/search.js' | relative_url }}"></script>
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}">
