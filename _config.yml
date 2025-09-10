@@ -10,6 +10,8 @@ markdown: kramdown
 highlighter: rouge
 permalink: pretty
 
+publications_source: collection   # 'bibtex' ou 'collection'
+
 # Plugins whitelists (via github-pages)
 plugins:
   - jekyll-feed
